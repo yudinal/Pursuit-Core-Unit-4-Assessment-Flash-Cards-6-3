@@ -2,13 +2,11 @@
 
 
 ## Github Instructions
-- Clone this repository to your machine.
-- Create a new branch for your work. Example: `davids-branch`
+- Fork this repository to your machine.
 - Complete the sections below.
-- Commit code as needed. Reminder: your commit history is part of what is being assessed.
-- Push your branch to Github.
-- Create a pull request to the master branch on Github. Tag the Instruction Associates and Instructor in your pull request.
-- Paste the link of your pull request into Canvas.
+- Commit frequently. Reminder: your commit history is part of what is being assessed.
+- Create a pull request when you're done.
+- Paste the link into Canvas.
 
 ## App Description
 Build a Flash Cards app that allows the user to create flash cards. Any created or saved flash cards should be persisted to the documents directory. The user should then be able to use those flash cards to test their knowledge!
