@@ -2,7 +2,8 @@
 
 
 ## Github Instructions
-- Fork this repository to your machine.
+- Fork this repository.
+- Clone your Fork to your laptop.
 - Complete the sections below.
 - Commit frequently. Reminder: your commit history is part of what is being assessed.
 - Create a pull request when you're done.
