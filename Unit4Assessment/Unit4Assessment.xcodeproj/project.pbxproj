@@ -17,6 +17,10 @@
 		A6D8559123F304EF006ABCF0 /* UserCardCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559023F304EF006ABCF0 /* UserCardCollectionController.swift */; };
 		A6D8559323F307A5006ABCF0 /* FlashCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559223F307A5006ABCF0 /* FlashCardCollectionViewController.swift */; };
 		A6D8559623F30DCB006ABCF0 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = A6D8559523F30DCB006ABCF0 /* ImageKit */; };
+		A6D8559923F312E9006ABCF0 /* UserCardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559823F312E9006ABCF0 /* UserCardCollectionView.swift */; };
+		A6D8559B23F31514006ABCF0 /* FlashCardsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559A23F31514006ABCF0 /* FlashCardsAPIClient.swift */; };
+		A6D8559E23F315F7006ABCF0 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559D23F315F7006ABCF0 /* UserPreference.swift */; };
+		A6D855A023F31640006ABCF0 /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559F23F31640006ABCF0 /* FlashCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,10 @@
 		A6D8558E23F3029F006ABCF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A6D8559023F304EF006ABCF0 /* UserCardCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCollectionController.swift; sourceTree = "<group>"; };
 		A6D8559223F307A5006ABCF0 /* FlashCardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCollectionViewController.swift; sourceTree = "<group>"; };
+		A6D8559823F312E9006ABCF0 /* UserCardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCollectionView.swift; sourceTree = "<group>"; };
+		A6D8559A23F31514006ABCF0 /* FlashCardsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsAPIClient.swift; sourceTree = "<group>"; };
+		A6D8559D23F315F7006ABCF0 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
+		A6D8559F23F31640006ABCF0 /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +95,10 @@
 			children = (
 				5790239723F2EE39000AA216 /* AppDelegate.swift */,
 				5790239923F2EE39000AA216 /* SceneDelegate.swift */,
+				A6D8559A23F31514006ABCF0 /* FlashCardsAPIClient.swift */,
 				A6D8558B23F30231006ABCF0 /* Controllers */,
+				A6D8559723F312AB006ABCF0 /* Views */,
+				A6D8559C23F315D9006ABCF0 /* Models */,
 				579023A023F2EE3B000AA216 /* Assets.xcassets */,
 				579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */,
 				579023A523F2EE3B000AA216 /* Info.plist */,
@@ -113,6 +124,23 @@
 				A6D8559223F307A5006ABCF0 /* FlashCardCollectionViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A6D8559723F312AB006ABCF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8559823F312E9006ABCF0 /* UserCardCollectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A6D8559C23F315D9006ABCF0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8559D23F315F7006ABCF0 /* UserPreference.swift */,
+				A6D8559F23F31640006ABCF0 /* FlashCard.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,11 +249,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D8559B23F31514006ABCF0 /* FlashCardsAPIClient.swift in Sources */,
 				5790239C23F2EE39000AA216 /* CreateAFlashCardViewController.swift in Sources */,
 				A6D8559323F307A5006ABCF0 /* FlashCardCollectionViewController.swift in Sources */,
 				A6D8558F23F3029F006ABCF0 /* TabBarController.swift in Sources */,
+				A6D855A023F31640006ABCF0 /* FlashCard.swift in Sources */,
 				A6D8559123F304EF006ABCF0 /* UserCardCollectionController.swift in Sources */,
 				5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */,
+				A6D8559923F312E9006ABCF0 /* UserCardCollectionView.swift in Sources */,
+				A6D8559E23F315F7006ABCF0 /* UserPreference.swift in Sources */,
 				5790239A23F2EE39000AA216 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
