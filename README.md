@@ -23,7 +23,7 @@ There are also some interesting stretch features (below the rubric).
 
 ### AutoLayout Requirements
 
-Your UI should be created programmatically using constraints. Do not use a storyboard. The Tab Bar Controller has been created in the Scene Delegate as the root view controller, but only has empty UIViewControllers.
+Your UI should be created programmatically using constraints. Do not use a storyboard. 
 
 ### Flash cards collection
 The first view controller contains the user's flash card collection. When the view loads, each "card" should show the title of the card. When a user taps the card, it should use an animation to load the "back" of the card, which lists the description (facts) of the card.
