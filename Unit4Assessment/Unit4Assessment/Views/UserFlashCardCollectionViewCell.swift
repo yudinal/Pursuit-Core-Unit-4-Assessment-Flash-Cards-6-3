@@ -38,12 +38,16 @@ class UserFlashCardCollectionViewCell: UICollectionViewCell {
     return label
   }()
   
-  public lazy var flashCardTextField: UITextField = {
-    let tf = UITextField()
-    return tf
-  }()
+ public lazy var flashCardTextView: UITextView = {
+   let textView = UITextView()
+   textView.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17)
+   textView.textColor = UIColor.darkText
+   textView.isEditable = false
+   textView.isSelectable = false
+   return textView
+ }()
   
-  private var isShowingTextField = false
+  private var isShowingTextView = false
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -58,7 +62,7 @@ class UserFlashCardCollectionViewCell: UICollectionViewCell {
   private func commonInit() {
   setupMoreButtonConstraints()
     setupFlashCardTitleConstraints()
-    setupFlashCardTextFieldConstraints()
+    setupFlashCardTextViewConstraints()
     layer.borderColor = UIColor.systemGray.cgColor
     layer.borderWidth = 1.0
     addGestureRecognizer(longPressGesture)
@@ -70,20 +74,23 @@ class UserFlashCardCollectionViewCell: UICollectionViewCell {
       return
     }
     
-    isShowingTextField.toggle()
-    flashCardTextField.text = currentFlashCard.facts.description
+    isShowingTextView.toggle()
+    flashCardTextView.text = currentFlashCard.presentAllFacts()
+    animate()
     }
   
   private func animate() {
     let duration: Double = 1.0
-    if isShowingTextField {
+    if isShowingTextView {
       UIView.transition(with: self, duration: duration, options: [.transitionFlipFromRight], animations: {
-        self.flashCardTextField.alpha = 1.0
+        self.flashCardTextView.alpha = 1.0
+        self.flashCardTextView.isHidden = false
         self.flashCardTitle.alpha = 0.0
       }, completion: nil)
     } else {
       UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft], animations: {
-        self.flashCardTextField.alpha = 0.0
+        self.flashCardTextView.alpha = 0.0
+        self.flashCardTextView.isHidden = true
         self.flashCardTitle.alpha = 1.0
       }, completion: nil)
     }
@@ -100,7 +107,7 @@ class UserFlashCardCollectionViewCell: UICollectionViewCell {
       moreButton.topAnchor.constraint(equalTo: topAnchor),
       moreButton.trailingAnchor.constraint(equalTo: trailingAnchor),
       moreButton.heightAnchor.constraint(equalToConstant: 44),
-      moreButton.widthAnchor.constraint(equalTo: moreButton.heightAnchor)
+     moreButton.widthAnchor.constraint(equalTo: moreButton.heightAnchor)
     ])
   }
   
@@ -108,21 +115,22 @@ class UserFlashCardCollectionViewCell: UICollectionViewCell {
     addSubview(flashCardTitle)
     flashCardTitle.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      flashCardTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
+      flashCardTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
       flashCardTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
       flashCardTitle.topAnchor.constraint(equalTo: moreButton.bottomAnchor),
       flashCardTitle.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
   }
   
-  private func setupFlashCardTextFieldConstraints() {
-    addSubview(flashCardTextField)
-    flashCardTextField.translatesAutoresizingMaskIntoConstraints = false
+  private func setupFlashCardTextViewConstraints() {
+    addSubview(flashCardTextView)
+    flashCardTextView.isHidden = true
+    flashCardTextView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      flashCardTextField.topAnchor.constraint(equalTo: moreButton.bottomAnchor),
-      flashCardTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
-      flashCardTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
-      flashCardTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
+      flashCardTextView.topAnchor.constraint(equalTo: moreButton.bottomAnchor),
+      flashCardTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      flashCardTextView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      flashCardTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
     ])
   }
   

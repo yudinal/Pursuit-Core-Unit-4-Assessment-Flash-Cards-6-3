@@ -15,7 +15,7 @@ import Foundation
 
 struct FlashCard: Codable, Equatable {
         let id: String
-        let quizTitle: String
+    var quizTitle: String
         let facts: [String]
     
     public func presentAllFacts() -> String {

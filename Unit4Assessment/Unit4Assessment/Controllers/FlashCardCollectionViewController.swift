@@ -17,6 +17,9 @@ class FlashCardCollectionViewController: UIViewController {
      
      public var userPreference: UserPreference!
     
+     private var plusBarButton: UIBarButtonItem!
+    //private var userFlashCard: FlashCard?
+    
     private var flashCards = [FlashCard]() {
       didSet {
         DispatchQueue.main.async {
@@ -33,12 +36,9 @@ class FlashCardCollectionViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        
         flashCardCollectionControllerView.collectionView.dataSource = self
         flashCardCollectionControllerView.collectionView.delegate = self
-        
-        flashCardCollectionControllerView.collectionView.register(CollectionFlashCardViewCell.self, forCellWithReuseIdentifier: "collectionFlashCardCell")
-        
+    flashCardCollectionControllerView.collectionView.register(CollectionFlashCardViewCell.self, forCellWithReuseIdentifier: "collectionFlashCardCell")
      loadFlashCards()
 
     }
@@ -50,6 +50,7 @@ class FlashCardCollectionViewController: UIViewController {
      print("error fetching flash cards: \(error)")
     }
     }
+    
 
 }
 
@@ -65,6 +66,7 @@ extension FlashCardCollectionViewController: UICollectionViewDataSource {
     let flashCard = flashCards[indexPath.row]
     cell.configreCell(for: flashCard)
     cell.backgroundColor = .systemBackground
+    cell.delegate = self
     return cell
   }
 }
@@ -77,7 +79,6 @@ extension FlashCardCollectionViewController: UICollectionViewDelegateFlowLayout 
     let itemHeight: CGFloat = maxSize.height * 0.30
     return CGSize(width: itemWidth, height: itemHeight)
   }
-  
 }
 
 extension FlashCardCollectionViewController: UserPreferenceDelegate {
@@ -85,3 +86,16 @@ extension FlashCardCollectionViewController: UserPreferenceDelegate {
     loadFlashCards()
   }
 }
+
+extension FlashCardCollectionViewController: CollectionFlashCardViewCellDelegate {
+ func didSelectPlusButton(_ collectionFlashCardViewCell: CollectionFlashCardViewCell, flashCard: FlashCard) {
+                do {
+                    try dataPersistence.createItem(flashCard)
+                    print("saved")
+                } catch {
+                    print("could not save \(error)")
+                }
+        }
+
+}
+

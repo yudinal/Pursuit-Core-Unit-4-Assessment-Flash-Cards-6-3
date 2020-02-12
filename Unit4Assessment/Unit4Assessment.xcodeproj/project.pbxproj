@@ -13,6 +13,7 @@
 		579023A123F2EE3B000AA216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579023A023F2EE3B000AA216 /* Assets.xcassets */; };
 		579023A423F2EE3B000AA216 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */; };
 		579023AF23F2EE3B000AA216 /* Unit4AssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579023AE23F2EE3B000AA216 /* Unit4AssessmentTests.swift */; };
+		A6D131B523F48EBF00F4ADC2 /* CreateFlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D131B423F48EBF00F4ADC2 /* CreateFlashCardView.swift */; };
 		A6D8558F23F3029F006ABCF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8558E23F3029F006ABCF0 /* TabBarController.swift */; };
 		A6D8559123F304EF006ABCF0 /* UserCardCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559023F304EF006ABCF0 /* UserCardCollectionController.swift */; };
 		A6D8559323F307A5006ABCF0 /* FlashCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8559223F307A5006ABCF0 /* FlashCardCollectionViewController.swift */; };
@@ -50,6 +51,7 @@
 		579023AA23F2EE3B000AA216 /* Unit4AssessmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Unit4AssessmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		579023AE23F2EE3B000AA216 /* Unit4AssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit4AssessmentTests.swift; sourceTree = "<group>"; };
 		579023B023F2EE3B000AA216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6D131B423F48EBF00F4ADC2 /* CreateFlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlashCardView.swift; sourceTree = "<group>"; };
 		A6D8558E23F3029F006ABCF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A6D8559023F304EF006ABCF0 /* UserCardCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCollectionController.swift; sourceTree = "<group>"; };
 		A6D8559223F307A5006ABCF0 /* FlashCardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardCollectionViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				A6D855A123F31D5F006ABCF0 /* UserFlashCardCollectionViewCell.swift */,
 				A6D855A923F33C33006ABCF0 /* FlashCardCollectionControllerView.swift */,
 				A6D855AB23F34764006ABCF0 /* CollectionFlashCardViewCell.swift */,
+				A6D131B423F48EBF00F4ADC2 /* CreateFlashCardView.swift */,
 				A6D855A323F32AED006ABCF0 /* EmptyView.swift */,
 			);
 			path = Views;
@@ -279,6 +282,7 @@
 				A6D8559123F304EF006ABCF0 /* UserCardCollectionController.swift in Sources */,
 				5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */,
 				A6D8559923F312E9006ABCF0 /* UserCardCollectionView.swift in Sources */,
+				A6D131B523F48EBF00F4ADC2 /* CreateFlashCardView.swift in Sources */,
 				A6D855AC23F34764006ABCF0 /* CollectionFlashCardViewCell.swift in Sources */,
 				A6D855A223F31D5F006ABCF0 /* UserFlashCardCollectionViewCell.swift in Sources */,
 				A6D8559E23F315F7006ABCF0 /* UserPreference.swift in Sources */,

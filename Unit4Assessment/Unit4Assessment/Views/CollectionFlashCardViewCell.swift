@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DataPersistence
+
 
 
 protocol CollectionFlashCardViewCellDelegate: AnyObject {
@@ -17,8 +17,8 @@ protocol CollectionFlashCardViewCellDelegate: AnyObject {
 class CollectionFlashCardViewCell: UICollectionViewCell {
     
   weak var delegate: CollectionFlashCardViewCellDelegate?
-  private var currentFlashCard: FlashCard!
-    public var dataPersistance: DataPersistence<FlashCard>!
+ private var currentFlashCard: FlashCard!
+
   
   private lazy var longPressGesture: UILongPressGestureRecognizer = {
     let gesture = UILongPressGestureRecognizer()
@@ -100,20 +100,57 @@ class CollectionFlashCardViewCell: UICollectionViewCell {
   }
   
   @objc private func plusButtonPressed(_ sender: UIButton) {
-    delegate?.didSelectPlusButton(self, flashCard: currentFlashCard)
-      
-        guard let flashCard = currentFlashCard else {
-            return
-        }
-        do {
-            try dataPersistance.createItem(flashCard)
-        } catch {
-            print("could not save \(error)")
-        }
-        
-        sender.isEnabled = false
-        showAlert(title: "Save", message: "This Flash Card has been added to your flash cards!", completion: nil)
+   delegate?.didSelectPlusButton(self, flashCard: currentFlashCard)
     }
+//      guard let flashCard = currentFlashCard else {
+//                return
+//            }
+//            do {
+//                try dataPersistance.createItem(flashCard)
+//            } catch {
+//                print("could not save \(error)")
+//            }
+//    }
+//          guard let flashCard = currentFlashCard else {return}
+//            if dataPersistance.hasItemBeenSaved(flashCard) {
+//              if let index = try? dataPersistance.loadItems().firstIndex(of: flashCard) {
+//                do {
+//                  try dataPersistance.deleteItem(at: index)
+//                } catch {
+//                  print("error deleting flash card: \(error)")
+//                }
+//              }
+//            } else {
+//              do {
+//                try dataPersistance.createItem(flashCard)
+//              } catch {
+//                print("error saving flash card: \(error)")
+//              }
+//            }
+////             updateSaveState(flashCard)
+//        }
+
+    
+//          private func updateSaveState(_ flashCard: FlashCard) {
+//            if dataPersistance.hasItemBeenSaved(flashCard) {
+//              plusBarButton.image = UIImage(systemName: "plus.circle")
+//            } else {
+//              plusBarButton.image = UIImage(systemName: "bookmark")
+//            }
+//          }
+
+//        guard let flashCard = currentFlashCard else {
+//            return
+//        }
+//        do {
+//            try dataPersistance.createItem(flashCard)
+//        } catch {
+//            print("could not save \(error)")
+//        }
+
+//        sender.isEnabled = false
+//        showAlert(title: "Save", message: "This Flash Card has been added to your flash cards!", completion: nil)
+    
   
   
   private func setupPlusButtonConstraints() {
@@ -143,7 +180,7 @@ class CollectionFlashCardViewCell: UICollectionViewCell {
     flashCardTextView.isHidden = true
     flashCardTextView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      flashCardTextView.topAnchor.constraint(equalTo: plusButton.bottomAnchor),
+        flashCardTextView.topAnchor.constraint(equalTo: plusButton.bottomAnchor),
       flashCardTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
       flashCardTextView.bottomAnchor.constraint(equalTo: bottomAnchor),
       flashCardTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
@@ -156,12 +193,12 @@ class CollectionFlashCardViewCell: UICollectionViewCell {
   }
 }
 
-extension CollectionFlashCardViewCell {
-    func showAlert(title:String? = nil, message: String? = nil, completion: ((UIAlertAction) -> Void)? = nil){
-    
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        
-    //present(alertVC, animated: true, completion: nil)
-        
-    }
-}
+//extension CollectionFlashCardViewCell {
+//    func showAlert(title:String? = nil, message: String? = nil, completion: ((UIAlertAction) -> Void)? = nil){
+//
+//        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+//
+//    //present(alertVC, animated: true, completion: nil)
+//
+//    }
+//}

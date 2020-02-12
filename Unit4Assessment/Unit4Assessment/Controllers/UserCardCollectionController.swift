@@ -14,11 +14,11 @@ class UserCardCollectionController: UIViewController {
     private let userCardCollectionView = UserCardCollectionView()
     public var dataPersistence: DataPersistence<FlashCard>!
     
-    private var userFlashCards = [FlashCard]() {
+    public var userFlashCards = [FlashCard]() {
         didSet {
             userCardCollectionView.collectionView.reloadData()
             if userFlashCards.isEmpty {
-                userCardCollectionView.collectionView.backgroundView = EmptyView(title: "User Flash Cards", message: "There are currently no saved flash cards. Start browsing by tapping on the Flash Card icon.")
+                userCardCollectionView.collectionView.backgroundView = EmptyView(title: "User Flash Cards", message: "There are currently no saved flash cards. Start browsing by tapping on the Search icon.")
             } else {
                 userCardCollectionView.collectionView.backgroundView = nil
             }
@@ -32,12 +32,21 @@ class UserCardCollectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        //fetchUserFlashCards()
+        fetchUserFlashCards()
+//        //loadFlashCards()
         userCardCollectionView.collectionView.dataSource = self
         userCardCollectionView.collectionView.delegate = self
         userCardCollectionView.collectionView.register(UserFlashCardCollectionViewCell.self, forCellWithReuseIdentifier: "userFlashCardCell")
-        
     }
+    
+  
+//    private func loadFlashCards() {
+//        do {
+//        userFlashCards = try FlashCardService.fetchFlashCards()
+//    } catch {
+//     print("error fetching flash cards: \(error)")
+//    }
+//    }
     
     private func fetchUserFlashCards() {
         do {
@@ -81,20 +90,40 @@ extension UserCardCollectionController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let flashCards = userFlashCards[indexPath.row]
+//
+//    }
 }
 
 extension UserCardCollectionController: DataPersistenceDelegate {
   func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
-    fetchUserFlashCards()
+   fetchUserFlashCards()
   }
   
   func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
-    fetchUserFlashCards()
+  fetchUserFlashCards()
   }
 }
 
 extension UserCardCollectionController: UserCardCollectionViewCellDelegate {
   func didSelectMoreButton(_ userCardCollectionViewCell: UserFlashCardCollectionViewCell, flashCard: FlashCard) {
+    
+    if dataPersistence.hasItemBeenSaved(flashCard) {
+                if let index = try? dataPersistence.loadItems().firstIndex(of: flashCard) {
+                  do {
+                    try dataPersistence.deleteItem(at: index)
+                  } catch {
+                    print("error deleting flash card: \(error)")
+                  }
+                }
+              } else {
+                do {
+                  try dataPersistence.createItem(flashCard)
+                } catch {
+                  print("error saving flash card: \(error)")
+                }
+              }
     print("didSelectMoreButton: \(flashCard.quizTitle)")
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -116,4 +145,12 @@ extension UserCardCollectionController: UserCardCollectionViewCellDelegate {
       print("error deleting flash card: \(error)")
     }
   }
+    
+          
 }
+
+  
+
+    
+    
+
