@@ -8,13 +8,24 @@
 
 import Foundation
 
-struct FlashCards: Codable & Equatable {
-    let cardListType: String
-    let cards: [FlashCard]
-}
+//struct FlashCards: Codable & Equatable {
+//    let cardListType: String
+//    let cards: [FlashCard]
+//}
 
 struct FlashCard: Codable, Equatable {
         let id: String
-        let cardTitle: String
+        let quizTitle: String
         let facts: [String]
+    
+    public func presentAllFacts() -> String {
+        var fact = String()
+        var facts1 = [String]()
+        facts.forEach{facts1.append($0.capitalized)}
+        fact = facts1.joined(separator: "\n")
+        return fact
 }
+    
+}
+
+
